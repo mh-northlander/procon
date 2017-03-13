@@ -12,19 +12,19 @@ using namespace std;
 
 
 struct node{
-  int idx;
-  int size;
-  int num;
-  node(int i, int s, int n): idx(i), size(s), num(n) {}
+  ll idx;
+  ll size;
+  ll num;
+  node(ll i, ll s, ll n): idx(i), size(s), num(n) {}
 };
 
 int main(){
   ll N;
   cin >> N;
 
-  map<int, pair<int,int> > stnmap;
-  for(int i=0; i<N; i++){
-    int tmp;
+  map<ll, pair<ll,ll> > stnmap;
+  for(ll i=0; i<N; i++){
+    ll tmp;
     cin >> tmp;
     if(stnmap.find(tmp) == stnmap.end()){
       stnmap[tmp] = make_pair(i,1);
@@ -44,7 +44,7 @@ int main(){
   //   q.pop();
   // } return 0;
 
-  vector<int> ans(N,0);
+  vector<ll> ans(N,0);
   while(q.front().size != 0){
     //cerr << q.front().idx << " " << q.front().size << " " << q.front().num << endl;
 
@@ -56,12 +56,12 @@ int main(){
     // cerr << crr.idx << " " << (crr.size - q.front().size) * crr.num << endl;
 
     ans[crr.idx] += (crr.size - q.front().size) * crr.num;
-    int tmp = min(q.front().idx, crr.idx);
+    ll tmp = min(q.front().idx, crr.idx);
     q.front().idx = tmp;
     q.front().num += crr.num;
   }
 
-  for(int i=0; i<N; i++){
+  for(ll i=0; i<N; i++){
     cout << ans[i] << endl;
   }
 
